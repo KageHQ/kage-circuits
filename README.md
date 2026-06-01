@@ -1,6 +1,6 @@
 # @kagehq/circuits
 
-The Circom `age_kyc` circuit and its Groth16 trusted-setup artifacts for the **proven-kyc** demo — a zero-knowledge e-KYC flow on Solana that proves a valid Indonesian KTP and age ≥ 18 without revealing the holder's NIK, name, or date of birth.
+The Circom `age_kyc` circuit and its Groth16 trusted-setup artifacts for the **Kage** demo — a zero-knowledge e-KYC flow on Solana that proves a valid Indonesian KTP and age ≥ 18 without revealing the holder's NIK, name, or date of birth.
 
 This repo produces the `.wasm`, `.zkey`, and `verification_key.json` consumed by **kage-mobile** (witness generation / proving), **kage-program** (verifying key), and **kage-e2e** (end-to-end proving).
 

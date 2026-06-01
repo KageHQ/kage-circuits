@@ -25,6 +25,7 @@ template AgeKYC() {
     signal input currentYY;      // 2-digit current year
     signal input minAge;
     signal input nullifierHash;
+    signal input scope;          // per-event/context binding (e.g. eventId)
 
     // (1) each NIK digit < 10
     component digitLt[16];
@@ -76,10 +77,13 @@ template AgeKYC() {
     ageOk.in[0] <== currentDateInt; ageOk.in[1] <== thresholdDate;
     ageOk.out === 1;
 
-    // (4) nullifier
-    component nh = Poseidon(1);
+    // (4) nullifier, scoped to the event/context.
+    // nullifier = Poseidon(secret, scope). Same identity proves once PER scope,
+    // so one person can verify at distinct events but not twice at the same one.
+    component nh = Poseidon(2);
     nh.inputs[0] <== secret;
+    nh.inputs[1] <== scope;
     nh.out === nullifierHash;
 }
 
-component main { public [ Ax, Ay, currentDateInt, currentYY, minAge, nullifierHash ] } = AgeKYC();
+component main { public [ Ax, Ay, currentDateInt, currentYY, minAge, nullifierHash, scope ] } = AgeKYC();

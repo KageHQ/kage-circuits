@@ -1,4 +1,11 @@
-# @kagehq/circuits
+<h1 align="center">@kagehq/circuits</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Circom-4B0082?style=flat-square" alt="Circom">
+  <img src="https://img.shields.io/badge/Groth16-2D7FF9?style=flat-square" alt="Groth16">
+  <img src="https://img.shields.io/badge/Zero--Knowledge-6E56CF?style=flat-square" alt="Zero-Knowledge">
+  <img src="https://img.shields.io/badge/Solana-000?style=flat-square&logo=solana&logoColor=14F195" alt="Solana">
+</p>
 
 The Circom `age_kyc` circuit and its Groth16 trusted-setup artifacts for the **Kage** demo — a zero-knowledge e-KYC flow on Solana that proves a valid Indonesian KTP and age ≥ 18 without revealing the holder's NIK, name, or date of birth.
 

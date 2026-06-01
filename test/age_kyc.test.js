@@ -51,4 +51,20 @@ describe("age_kyc", function () {
     catch (e) { threw = true; }
     expect(threw).to.equal(true);
   });
+
+  it("accepts a credential produced by the issuer module", async () => {
+    const { createIssuer } = require("../../issuer/src/credential");
+    const issuer = await createIssuer(ISSUER_PRIV);
+    const cred = await issuer.sign({ nik: NIK_MALE_1995, name: 12345n });
+    const nikDigits = NIK_MALE_1995.split("");
+    const input = {
+      nik: nikDigits, name: "12345", secret: cred.secret,
+      Ax: cred.pubKey.Ax, Ay: cred.pubKey.Ay,
+      R8x: cred.signature.R8x, R8y: cred.signature.R8y, S: cred.signature.S,
+      currentDateInt: "20260601", currentYY: "26", minAge: "18",
+      nullifierHash: cred.nullifierHash,
+    };
+    const w = await circuit.calculateWitness(input, true);
+    await circuit.checkConstraints(w);
+  });
 });

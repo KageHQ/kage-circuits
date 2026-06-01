@@ -12,7 +12,8 @@ echo "==> Powers of Tau (bn128, 2^14)"
 PTAU="$BUILD/pot14.ptau"
 if [ ! -f "$PTAU" ]; then
   pnpm exec snarkjs powersoftau new bn128 14 "$BUILD/pot14_0000.ptau" -v
-  pnpm exec snarkjs powersoftau prepare phase2 "$BUILD/pot14_0000.ptau" "$PTAU" -v
+  pnpm exec snarkjs powersoftau contribute "$BUILD/pot14_0000.ptau" "$BUILD/pot14_0001.ptau" --name="demo ptau" -e="demo-ptau-entropy-fixed" -v
+  pnpm exec snarkjs powersoftau prepare phase2 "$BUILD/pot14_0001.ptau" "$PTAU" -v
 fi
 
 echo "==> Groth16 setup"

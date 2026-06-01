@@ -3,8 +3,8 @@ const { expect } = require("chai");
 const wasm_tester = require("circom_tester").wasm;
 const { buildInput } = require("./helpers");
 
-const ISSUER_PRIV = Buffer.from(
-  "0001020304050607080900010203040506070809000102030405060708090001", "hex");
+const { DEMO_ISSUER_PRIV } = require("@kagehq/shared");
+const ISSUER_PRIV = Buffer.from(DEMO_ISSUER_PRIV, "hex");
 
 // NIK layout: PP RR DD | DD MM YY | SSSS ; positions 6,7=day 8,9=month 10,11=yy
 const NIK_MALE_1995 = "3174071708950001";   // day=17, month=08, yy=95
@@ -53,7 +53,7 @@ describe("age_kyc", function () {
   });
 
   it("accepts a credential produced by the issuer module", async () => {
-    const { createIssuer } = require("../../issuer/src/credential");
+    const { createIssuer } = require("@kagehq/shared");
     const issuer = await createIssuer(ISSUER_PRIV);
     const cred = await issuer.sign({ nik: NIK_MALE_1995, name: 12345n });
     const nikDigits = NIK_MALE_1995.split("");

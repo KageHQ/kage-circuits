@@ -1,11 +1,15 @@
 {
-  "name": "@proven-kyc/circuits",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@kagehq/circuits",
+  "version": "1.0.0",
+  "main": "index.js",
+  "files": ["index.js", "circuits", "build/age_kyc_js/age_kyc.wasm", "build/age_kyc.zkey", "build/verification_key.json"],
+  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "repository": { "type": "git", "url": "git+https://github.com/KageHQ/kage-circuits.git" },
   "scripts": {
-    "test": "mocha test/**/*.test.js --timeout 100000",
-    "build": "bash scripts/build.sh"
+    "build": "bash scripts/build.sh",
+    "test": "mocha test/**/*.test.js --timeout 100000"
   },
+  "dependencies": { "@kagehq/shared": "^1.0.0" },
   "devDependencies": {
     "circom_tester": "^0.0.20",
     "circomlib": "^2.0.5",

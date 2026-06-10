@@ -4,16 +4,13 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@kagehq/shared': link:../kage-shared
-
 importers:
 
   .:
     dependencies:
       '@kagehq/shared':
-        specifier: link:../kage-shared
-        version: link:../kage-shared
+        specifier: ^1.0.0
+        version: 1.0.0
     devDependencies:
       chai:
         specifier: ^4.3.7
@@ -134,6 +131,9 @@ packages:
 
   '@iden3/binfileutils@0.0.12':
     resolution: {integrity: sha512-naAmzuDufRIcoNfQ1d99d7hGHufLA3wZSibtr4dMe6ZeiOPV1KwOZWTJ1YVz4HbaWlpDuzVU72dS4ATQS4PXBQ==}
+
+  '@kagehq/shared@1.0.0':
+    resolution: {integrity: sha512-wYqs2crFSUDHk9XJfjHP2jm2XrZev/0k6GZi+tPud0hdBbfOOnkXzieyyGnQNs6DIB72uCy1ttW4gzEJgB1dwg==, tarball: https://npm.pkg.github.com/download/@kagehq/shared/1.0.0/e63f29d1fddf89777fa5d1a247c519885bed0afc}
 
   '@noble/hashes@1.8.0':
     resolution: {integrity: sha512-jCs9ldd7NwzpgXDIf6P3+NrHh9/sD6CQdxHyjQI+h/6rDNo88ypBxxz45UDuZHz9r3tNz7N/VInSVoVdtXEI4A==}
@@ -1055,6 +1055,14 @@ snapshots:
     dependencies:
       fastfile: 0.0.20
       ffjavascript: 0.3.1
+
+  '@kagehq/shared@1.0.0':
+    dependencies:
+      circomlibjs: 0.1.7
+    transitivePeerDependencies:
+      - bufferutil
+      - react-native-b4a
+      - utf-8-validate
 
   '@noble/hashes@1.8.0': {}
 
